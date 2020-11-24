@@ -32,21 +32,21 @@ int main(void)
 			fork_return = fork();
 			if (fork_return == 0)
 			{
-				sleep(3);
-				printf("in del proceso actual= %d\n", getpid());
+				printf("id del proceso actual= %d\n", getpid());
 				rexec = execve(process_receptor[0], process_receptor, NULL);
 				if (rexec != 0)
 					printf("error de ejecucion\n");
-				exit(EXIT_SUCCESS);
 			}
 			else
 			{
 				proceso_terminado = wait(NULL);
-				printf("id del proceso terminado = %d", proceso_terminado);
+				printf("id del proceso terminado = %d\n", proceso_terminado);
 			}
 			/*fin del proceso*/
 			free(process_receptor);
 		}
+	/*reinicio de line user*/
+	*line_user = '\n';
 	}
 	free(line_user);
 	return (0);
